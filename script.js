@@ -17,6 +17,19 @@ function addBookToLibrary([title, author, pages, read]) {
   myLibrary.push(book);
 }
 
+// toggleReadStatus Function
+function toggleReadStatus(index) {
+  myLibrary[index].read = !myLibrary[index].read;
+  displayBook();
+}
+
+
+// deleteBook Function
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
+  displayBook();
+}
+
 // DisplayBook Function
 function displayBook() {
   const content = document.querySelector(".content");
@@ -28,6 +41,7 @@ function displayBook() {
     rowDiv.id = i;
     content.appendChild(rowDiv);
 
+    // Add new book value div
     propertiesToDisplay.forEach((property) => {
       const book = myLibrary[i];
       const newBookDiv = document.createElement("div");
@@ -35,8 +49,28 @@ function displayBook() {
       rowDiv.appendChild(newBookDiv);
       newBookDiv.appendChild(newBookValue);
       });
-    };
+    
+    const changeReadStatusBtn = document.createElement("button");
+    changeReadStatusBtn.className = "changereadstatus";
+    const changeReadStatusBtnText = document.createTextNode("Change Read Status");
+    changeReadStatusBtn.appendChild(changeReadStatusBtnText);
+    rowDiv.appendChild(changeReadStatusBtn);
+
+    changeReadStatusBtn.addEventListener("click", () => {
+      toggleReadStatus(i);
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete";
+    const deleteBtnText = document.createTextNode("Delete");
+    deleteBtn.appendChild(deleteBtnText);
+    rowDiv.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener("click", () => {
+      deleteBook(i);
+    })
   };
+};
 
 
 // Dialog
@@ -65,3 +99,5 @@ form.addEventListener("submit", (e) => {;
     displayBook()
   dialog.close();
 })
+
+
