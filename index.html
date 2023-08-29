@@ -11,17 +11,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="table">
-    <div class="title">Title
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <dialog id="bookDialog">
+        <form id="form">
+          <div class="form-row">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" />
+          </div>
+          <div class="form-row">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author /">
+          </div>
+          <div class="form-row">
+          <label for="pages">Pages:</label>
+          <input type="number" id="pages" name="pages" />
+          </div>
+          <fieldset>
+            <legend>Read the book?</legend>
+            <div>
+              <input type="radio" id="yes" name="read" value="Read" />
+              <label for="read">Yes</label>
+            </div>
+            <div>
+              <input type="radio" id="no" name="read" value="Not Read" />
+              <label for="no">No</label>
+            </div>
+          </fieldset>
+          <button id="cancel" type="reset">Cancel</button>
+          <button id="submit" type="submit">Submit</button>
+        </form>
+      </dialog>
+      <button id="addaBook">Add a book</button>
     </div>
-    <div class="author">Author
+    <!-- Table -->
+    <div id="table">
+      <div class="column">
+        <div class="title">Title</div>
+        <div class="author">Author</div>
+        <div class="pages">Pages</div>
+        <div class="read">Read</div>
+        <div class="changeReadStatus"></div>
+        <div class="delete">Delete</div>
+      </div>
+      <div class="content"></div>       
+      </div>
     </div>
-    <div class="pages">Pages</div>
-    <div class="read">Read</div>
-    <div class="changeReadStatus"></div>
-    <div class="edit"></div>
-    <div class="delete">Delete</div>
   </div>
-   
 </body>
 </html>
